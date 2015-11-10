@@ -1,0 +1,55 @@
+﻿<?php
+# Author: ikoniaris
+# Website: bruteforce.gr/kippo-graph
+# Modifications: standa4
+
+# DIR_ROOT: defines where your Kippo-Graph installation currently resides in.
+# Please don't change this unless there is a special reason to do so.
+define('DIR_ROOT', dirname(__FILE__));
+
+# Language selection for charts -- Default: en (English)
+# Change the two-letter lang.XX.php language code to your preferred choice.
+# Available options:
+#  en: English 
+require_once(DIR_ROOT . '/include/languages/lang.en.php');
+
+# MySQL server configuration: you will have to change the following
+# four definitions from the default values to the correct ones,
+# according to your MySQL server instance. When you installed Kippo
+# and configured MySQL logging, you should have created a new
+# MySQL user just for this job, otherwise use root (not recommended!)
+define('DB_HOST', '127.0.0.1');
+define('DB_USER', 'user');
+define('DB_PASS', 'password');
+define('DB_NAME', 'db');
+define('DB_PORT', '5432');
+
+# Which geolocation method should be used -- Default: LOCAL (MaxMind)
+# Note: LOCAL (MaxMind) enables additional fields in various components.
+#  When using LOCAL you might want to periodically update (monthly) the
+#  kippo-graph/include/maxmind/GeoLite2-City.mmdb MaxMind database file
+#  with a new one from: http://dev.maxmind.com/geoip/geoip2/geolite2/
+# Available options:
+#  LOCAL: fastest, uses a local MaxMind GeoLite2 database
+#  GEOPLUGIN: uses the geoplugin.com web service (online)
+define('GEO_METHOD', 'LOCAL');
+
+# Realtime statistics for the main Kippo-Graph component -- Default: YES
+# This value determines whether Kippo-Graph will query the MySQL server
+# every time the component's page loads. Disabling this feature can be
+# useful if your database has become huge after a long time of operation.
+# Note: if you disable this, you will probably want to setup the hourly cron
+#   script to update the charts in the background (see README for details).
+# Change YES to NO if you want to disable it.
+define('REALTIME_STATS', 'YES');
+
+# Check for Tor exit nodes -- Default: NO
+# This enables checking of all logged IP addresses against the current Tor exit
+# nodes list using the Tor Bulk Exit List exporting tool. The list of exit nodes
+# is also saved locally, in case the online service goes down.
+# Note: this enables additional fields in various components.
+# Change NO to YES if you want to enable it.
+define('TOR_CHECK', 'NO');
+
+
+?>
